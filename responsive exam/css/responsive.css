@@ -1,0 +1,113 @@
+
+@media only screen and (max-width: 954px){
+    .text-vertical-center h1, .text-vertical-center h3, aside.call-to-action.bg-primary h1, aside.call-to-action.bg-primary h2, aside.call-to-action.bg-primary h3 {
+        margin: 10px;
+        width: unset;
+    }
+
+    section#about .col-lg-12 {
+        width: unset;
+    }
+
+    footer {
+        padding: 0;
+        float: left;
+        width: 100%;
+    }
+
+    .container .blk2 {
+        float: none;
+        margin: 0 auto;
+        width: 60%;
+    }
+    .container .blk{
+        width: 25%;
+    }
+    .text-vertical-center img {
+        width: 50%;
+    }
+
+    .callout {
+        display: table;
+        width: 100%;
+        height: 600px;
+    }
+}
+@media (max-width: 650px) {
+    .container .blk{
+        display: inline-block;
+        width: 40%;
+        min-width: 200px;
+        float: none;
+    }
+}
+@media only screen and (max-width: 754px){
+    .text-vertical-center h1, .text-vertical-center h3, aside.call-to-action.bg-primary h1, aside.call-to-action.bg-primary h2, aside.call-to-action.bg-primary h3 {
+        margin: 10px;
+        width: unset;
+    }
+
+    section#about .col-lg-12 {
+        width: unset;
+    }
+
+    footer {
+        padding: unset;
+        float: right;
+    }
+}
+
+@media only screen and (max-width: 454px){
+    .text-vertical-center h1, .text-vertical-center h3, aside.call-to-action.bg-primary h1, aside.call-to-action.bg-primary h2, aside.call-to-action.bg-primary h3 {
+        margin: 10px;
+        width: unset;
+    }
+    .text-vertical-center h1 {
+        font-size: 3em;
+    }
+
+    .text-vertical-center img {
+        width: 80%;
+    }
+    
+    .callout {
+        display: table;
+        width: 100%;
+        height: 600px;
+    }
+
+    section#about .col-lg-12 {
+        width: 100%;
+    }
+
+    footer {
+        padding: 0;
+        float: right;
+    }
+}
+
+@media only screen and (max-width: 320px){
+    .text-vertical-center h1, .text-vertical-center h3, aside.call-to-action.bg-primary h1, aside.call-to-action.bg-primary h2, aside.call-to-action.bg-primary h3 {
+        margin: 10px;
+        width: unset;
+    }
+
+    section#about .col-lg-12 {
+        width: unset;
+    }
+
+    .text-vertical-center img {
+        width: 90%;
+    }
+
+    footer {
+        padding: 0;
+        float: left;
+    }
+
+    .callout {
+        display: table;
+        width: unset;
+        height: 600px;
+    }
+}
