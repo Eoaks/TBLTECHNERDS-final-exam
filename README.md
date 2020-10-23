@@ -3,8 +3,8 @@ test for a nodejs position
 
 # TO RUN
 1. clone the repository
-2. run `npm install`
-3. `cd server`
+2. `cd server`
+3. run `npm install`
 4. `npm run dev`
 5. Go to localhost:3333 on your browser
 
