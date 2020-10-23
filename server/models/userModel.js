@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
+const contactSchema = require('./contactModel');
+
 
 const userSchema = new Schema({
     email: {
@@ -14,7 +16,7 @@ const userSchema = new Schema({
         required: true
     },
     contacts: [
-        { type: Schema.Types.ObjectId, ref: 'Contact' }
+        contactSchema
     ]
 }, {
     timestamps: true
