@@ -1,0 +1,10 @@
+extends layout
+block layout-content
+    form(method="POST", action="/register")
+        input(type="email"  name="email" id="email" required placeholder="email")
+        br
+        input(type="password" name="password" id="password"  required placeholder="password")
+        br
+        input(type="submit" value="register")
+    p= error
+    a(href="/") go back

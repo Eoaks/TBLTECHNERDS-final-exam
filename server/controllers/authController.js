@@ -3,18 +3,24 @@ const User = mongoose.model('User');
 const jwtController = require('./jwtController');
 
 exports.register = function(req, res) {
+    User.findOne({email: req.body.email.toLowerCase()}, (err, user) => {
+        if(user) {
+            res.render('register', {error: 'email taken'})
+        }
+    })
     let user = new User({
         email: req.body.email
     });
     user.password = user.generateHash(req.body.password);
-    
+    user.contacts = [];
     user.save(function(err){
         if(err) {
             console.log(err);
+            return;
         }
-        return res
-            .status(200)
-            .json({token: jwtController.createToken(user)});
+        res.cookie('token', 'Bearer ' + jwtController.createToken(user), {httpOnly: true});
+        res.cookie('loggedIn', 'true');
+        return res.redirect(302, '/');
     });
 };
 
@@ -25,12 +31,18 @@ exports.login = function(req, res) {
         }
         if(user) {
             if(user.checkPassword(req.body.password)) {
-                console.log('checked')
-                return res.status(200).json({token: jwtController.createToken(user)});
+                res.cookie('token', 'Bearer ' + jwtController.createToken(user), {httpOnly: true})
+                res.cookie('loggedIn', 'true')
+                return res.redirect(302, '/');
             }
-            return res.status(400).json({message: 'wrong password'});
+            return res.status(400).render('login', {error: 'wrong password'});
         } else {
-            return res.status(400).json({message: 'user not found'});
+            return res.status(400).render('login', {error: 'user not found'});
         }
     });
+};
+exports.logout = function(req, res) {
+   res.cookie('token', '');
+   res.cookie('loggedIn', 'false');
+   res.redirect(302, '/');
 };

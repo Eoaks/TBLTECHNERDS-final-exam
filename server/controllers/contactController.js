@@ -16,20 +16,22 @@ exports.add = function (req, res) {
             if(err) {
                 res.status(400).json(err);
             }
-            res.status(201).json(user.contacts[user.contacts.length - 1]);
+            res.redirect(302, '/')
         });
     });
 }
 exports.get = function (req, res) {
     User.findById(req.userId, (err, user) => {
-        if (err) {
+        if (err) { 
             console.log(err)
         }
-        
+        if(req.query.id) {
+            return res.render('details', user.contacts.id(req.query.id))
+        }
         let limit = 10;
-        let { page = 1 } = req.body;
+        let { page = 1 } = req.query;
         let offset = limit * page;
-
+ 
         let resultArray = user.contacts.sort( (a,b) => {
             if (a.firstName > b.firstName) {
                 return 1;
@@ -37,10 +39,9 @@ exports.get = function (req, res) {
             if (a.firstName < b.firstName) {
             return -1;
             }
-            return 0;
+            return 0; 
         })
-
-        res.status(200).send(resultArray.slice(offset - limit, offset));
+        return res.render('home', {contacts: resultArray.slice(offset - limit, offset), totalPages: Math.ceil(user.contacts.length / limit) });
     });
 }
 exports.search = function (req, res) {
@@ -73,7 +74,7 @@ exports.update = function(req, res) {
             if(err) {
                 res.status(400).json(err);
             }
-            res.status(200).json({message: 'success'})
+            res.redirect(302, '/');
         });
     });
 }
@@ -87,7 +88,7 @@ exports.remove = function(req, res) {
             if(err) {
                 res.status(400).json(err);
             }
-            res.status(200).json({message: 'sucess'})
+            res.redirect(302, '/')
         });
     });
 }

@@ -1,11 +1,11 @@
 const jwtController = require('../controllers/jwtController');
 
 module.exports = function(req, res, next) {
-  if(!req.headers.authorization) {
-    return res.status(403).send({message: "not authorized"});
+  if(!req.cookies.token) {
+    return res.redirect(302, '.');
   }
   
-  let token = req.headers.authorization.split(" ")[1];
+  let token = req.cookies.token.split(" ")[1];
   let payload = jwtController.decodeToken(token);
   
   if(payload.exp <= Date.now()) {

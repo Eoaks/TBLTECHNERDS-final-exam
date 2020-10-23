@@ -1,0 +1,16 @@
+extends layout
+block layout-content
+    form(method="POST", action="/update-contact")
+        input(type="hidden" name="id" value=_id)
+        input(type="text"  name="firstName" required placeholder="First Name" value=firstName)
+        br
+        input(type="text"  name="lastName" required placeholder="Last Name" value=lastName)
+        br
+        input(type="email"  name="email" required placeholder="Email" value=email)
+        br
+        input(type="text" name="phone"  required placeholder="phone" value=phone)
+        br
+        input(type="submit" value="update")
+    form(method="POST", action="/delete-contact")
+        input(type="hidden" name="id" value=_id)
+        input(type="submit" value="delete")

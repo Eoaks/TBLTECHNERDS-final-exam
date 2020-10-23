@@ -1,0 +1,16 @@
+extends layout
+block layout-content
+    button
+        a(href="/new-contact" ) add new contact
+    ul
+        each contact in contacts
+            li
+                a(href=`/contact/?id=${contact._id}`)
+                    span= contact.firstName + contact.lastName
+                    span= contact.email
+                    span= contact.phone
+    div.pagination-links
+        -for (var i = 1; i <= totalPages; i++)
+            button
+                a(href=`/contact/?page=${i}`)= i 
+    a(href='logout')  log out
